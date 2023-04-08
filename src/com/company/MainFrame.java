@@ -24,21 +24,36 @@ public class MainFrame extends JFrame {
         mostrarDatosContenedorButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ventana2.setVisible(true);
 
-                Contenedor c1;
-                int id = Integer.parseInt(textField.getText());
+
+                Contenedor c1=null;
+                int id = Integer.parseInt(mostrardatostext.getText());
                 int id2=0;
                 for (int i = 0; i < 3; i++) {
                     for (int x = 0; x < 10; x++) {
                         for (int y = 0; y < 12; y++) {
-                            if (i==0){id2=p1.puerto[0].getid(i+1,x+1);c1=p1.puerto[0].getContenedor(x,y);}
-                            if (i==1){id2=p1.puerto[1].getid(i+1,x+1);c1=p1.puerto[0].getContenedor(x,y);}
-                            if (i==2){id2=p1.puerto[2].getid(i+1,x+1);c1=p1.puerto[0].getContenedor(x,y);}
+                            if (i==0)
+                            {
+                                if(p1.puerto[0].vacio(x,y)==true){continue;}
+                                id2=p1.puerto[0].getid(i+1,x+1);c1=p1.puerto[0].getContenedor(x,y);
+                            }
+                            if (i==1)
+                            {
+                                if(p1.puerto[1].vacio(x,y)==true){continue;}
+                                id2=p1.puerto[1].getid(i+1,x+1);c1=p1.puerto[1].getContenedor(x,y);
+                            }
+                            if (i==2){
+                                if(p1.puerto[2].vacio(x,y)==true){continue;}
+                                id2=p1.puerto[2].getid(i+1,x+1);c1=p1.puerto[2].getContenedor(x,y);
+                            }
                             if (id2==id) {break;}
                         }
                     }
                 }
+                    ventana2.mostrar(c1);
+                    ventana2.setVisible(true);
+
+
 
 
 
@@ -56,18 +71,25 @@ public class MainFrame extends JFrame {
                 boolean inspeccionado=inspecciónEnAduanasCheckBox.isSelected();
                 ButtonModel seleccionado=ButtonGroup2.getSelection();
                 int prioridad=0;
-                if (seleccionado==a1RadioButton){prioridad=1;}
-                else if (seleccionado==a2RadioButton){prioridad=2;}
-                else if (seleccionado==a3RadioButton){prioridad=3;}
+                System.out.println(a1RadioButton.isSelected());
+                System.out.println(a2RadioButton.isSelected());
+                System.out.println(a3RadioButton.isSelected());
+                if (a1RadioButton.isSelected()){prioridad=1;}
+                else if (a2RadioButton.isSelected()){prioridad=2;}
+                else if (a3RadioButton.isSelected()){prioridad=3;}
                 String descripción=textArea1.getText();
                 String empresaemisora=emisora.getText();
                 String empresaremitente=remitente.getText();
 
 
+
+
                 //Luego creamos un contenedor con esas variables, y lo apilamos en el puerto
                 Contenedor c1 = new Contenedor(id,peso,pais,inspeccionado,prioridad,descripción,empresaemisora,empresaremitente);
                 p1.apilarPuerto(c1);
-
+                System.out.println(p1.puerto[0].mostrar());
+                System.out.println(p1.puerto[1].mostrar());
+                System.out.println(p1.puerto[2].mostrar());
 
             }
         });
@@ -95,5 +117,6 @@ public class MainFrame extends JFrame {
     private javax.swing.JTextField textField2;
     private JLabel emisora;
     private JLabel remitente;
+    private JTextField mostrardatostext;
 }
 
