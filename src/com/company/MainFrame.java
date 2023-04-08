@@ -90,6 +90,35 @@ public class MainFrame extends JFrame {
 
             }
         });
+        desapilarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println(p1.puerto[0].mostrar());
+                int id = Integer.parseInt(DesapilarText.getText());
+                int id2=0;
+                for (int i = 0; i < 3; i++) {
+                    for (int x = 0; x < 10; x++) {
+                        for (int y = 0; y < 12; y++) {
+                            if (i==0)
+                            {
+                                if(p1.puerto[0].vacio(x,y)==true){continue;}
+                                id2=p1.puerto[0].getid(x,y); if (id2==id){p1.puerto[0].desapilar(y+1);System.out.println(p1.puerto[0].mostrar());}
+                            }
+                            else if (i==1)
+                            {
+                                if(p1.puerto[1].vacio(x,y)==true){continue;}
+                                id2=p1.puerto[1].getid(x,y);if (id2==id){p1.puerto[1].desapilar(y+1);}
+                            }
+                            else if (i==2){
+                                if(p1.puerto[2].vacio(x,y)==true){continue;}
+                                id2=p1.puerto[2].getid(x,y);if (id2==id){p1.puerto[2].desapilar(y+1);}
+                            }
+
+                        }
+                    }
+                }
+            }
+        });
     }
     private JTextField textField4;
     private JTextField textField5;
@@ -106,7 +135,7 @@ public class MainFrame extends JFrame {
     private JButton desapilarButton;
     private JButton mostrarDatosContenedorButton;
     private JButton cuantosButton;
-    private JTextField númeroDeColumnaTextField;
+    private JTextField DesapilarText;
     private JComboBox comboBox2;
     private JTextField textField3;
     private JPanel panel;
