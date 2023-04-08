@@ -1,6 +1,7 @@
 package com.company;
 
 import javax.swing.*;
+import com.company.*;
 
 public class Frame2 extends JFrame {
     private JCheckBox inspecciónEnAduanasCheckBox;
@@ -15,12 +16,12 @@ public class Frame2 extends JFrame {
     private JRadioButton a3RadioButton;
     private JPanel panel2;
 
-    public Frame2(){
+    public Frame2(Contenedor c1){
         setTitle("Gestión de contenedores");
         setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
         setSize(700,400);
         setContentPane(panel2);
-
+        Contenedor c=c1;
 
     }
 }

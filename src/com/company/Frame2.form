@@ -79,7 +79,7 @@
           </grid>
         </constraints>
         <properties>
-          <text value="11111111"/>
+          <text value=""/>
         </properties>
       </component>
       <component id="27fe" class="javax.swing.JTextField" binding="a10TextField" default-binding="true">
@@ -89,7 +89,7 @@
           </grid>
         </constraints>
         <properties>
-          <text value="10"/>
+          <text value=""/>
         </properties>
       </component>
       <component id="307be" class="javax.swing.JTextArea" binding="juguetesTextArea" default-binding="true">
@@ -99,7 +99,7 @@
           </grid>
         </constraints>
         <properties>
-          <text value="Juguetes "/>
+          <text value=""/>
         </properties>
       </component>
       <component id="9f257" class="javax.swing.JTextField" binding="playlockSCCTextField" default-binding="true">
@@ -109,7 +109,7 @@
           </grid>
         </constraints>
         <properties>
-          <text value="Playlock SCC"/>
+          <text value=""/>
         </properties>
       </component>
       <component id="8a492" class="javax.swing.JTextField" binding="INJUSASATextField" default-binding="true">
@@ -119,7 +119,7 @@
           </grid>
         </constraints>
         <properties>
-          <text value="INJUSA S.A"/>
+          <text value=""/>
         </properties>
       </component>
       <component id="2dc64" class="javax.swing.JTextField" binding="textField1" default-binding="true">
