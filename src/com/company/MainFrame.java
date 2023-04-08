@@ -91,6 +91,7 @@ public class MainFrame extends JFrame {
                 System.out.println(p1.puerto[1].mostrar());
                 System.out.println(p1.puerto[2].mostrar());
 
+
             }
         });
     }
