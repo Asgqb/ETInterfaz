@@ -58,9 +58,7 @@ public class MainFrame extends JFrame {
                         for (int y = 0; y < 12; y++) {
                             if (i==0)
                             {
-                                if(p1.puerto[0].vacio(x,y)==true){
-                                    System.out.println(y);
-                                    System.out.println(p1.puerto[0].mostrar());;continue;}
+                                if(p1.puerto[0].vacio(x,y)==true){continue;}
                                 id2=p1.puerto[0].getid(x,y);c1=p1.puerto[0].getContenedor(x,y);
                             }
                             else if (i==1)
