@@ -13,13 +13,37 @@ public class MainFrame extends JFrame {
         setSize(900,700);
         setContentPane(panel);
         ButtonGroup2.add(a1RadioButton);   //Añadimos los botones al grupo de botones que hemos
-        ButtonGroup2.add(a2RadioButton);    //creado fuera del constructor
+        ButtonGroup2.add(a2RadioButton);    //creado fuera del constructor para que sean excluyentes
         ButtonGroup2.add(a3RadioButton);
         //Añadir opciones a la selección de países
         comboBox1.addItem("España");
         comboBox1.addItem("Italia");
         comboBox1.addItem("Francia");
         Puerto p1=new Puerto();  //Creamos puerto
+
+        apilarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //Primero creamos variables que cojan los valores introducidos
+                int id=Integer.parseInt(textField.getText());
+                int peso=Integer.parseInt(textField2.getText());
+                String pais= (String)comboBox1.getSelectedItem();
+                boolean inspeccionado=inspecciónEnAduanasCheckBox.isSelected();
+                int prioridad=0;
+                if (a1RadioButton.isSelected()){prioridad=1;}
+                else if (a2RadioButton.isSelected()){prioridad=2;}
+                else if (a3RadioButton.isSelected()){prioridad=3;}
+                String descripción=textArea1.getText();
+                String empresaemisora=textField4.getText();
+                String empresaremitente=textField5.getText();
+
+
+                //Luego creamos un contenedor con esas variables, y lo apilamos en el puerto
+                Contenedor c1 = new Contenedor(id,peso,pais,inspeccionado,prioridad,descripción,empresaemisora,empresaremitente);
+                p1.apilarPuerto(c1);
+
+            }
+        });
 
         mostrarDatosContenedorButton.addActionListener(new ActionListener() {
             @Override
@@ -34,62 +58,36 @@ public class MainFrame extends JFrame {
                         for (int y = 0; y < 12; y++) {
                             if (i==0)
                             {
-                                if(p1.puerto[0].vacio(x,y)==true){continue;}
-                                id2=p1.puerto[0].getid(i+1,x+1);c1=p1.puerto[0].getContenedor(x,y);
+                                if(p1.puerto[0].vacio(x,y)==true){
+                                    System.out.println(y);
+                                    System.out.println(p1.puerto[0].mostrar());;continue;}
+                                id2=p1.puerto[0].getid(x,y);c1=p1.puerto[0].getContenedor(x,y);
                             }
-                            if (i==1)
+                            else if (i==1)
                             {
                                 if(p1.puerto[1].vacio(x,y)==true){continue;}
-                                id2=p1.puerto[1].getid(i+1,x+1);c1=p1.puerto[1].getContenedor(x,y);
+                                id2=p1.puerto[1].getid(x,y);c1=p1.puerto[1].getContenedor(x,y);
                             }
-                            if (i==2){
+                            else if (i==2){
                                 if(p1.puerto[2].vacio(x,y)==true){continue;}
-                                id2=p1.puerto[2].getid(i+1,x+1);c1=p1.puerto[2].getContenedor(x,y);
+                                id2=p1.puerto[2].getid(x,y);c1=p1.puerto[2].getContenedor(x,y);
                             }
                             if (id2==id) {break;}
                         }
                     }
                 }
+                if (c1!=null) {
                     ventana2.mostrar(c1);
                     ventana2.setVisible(true);
+                }
+                else{
+                    ventana2.setVisible(true);
+                }
 
 
 
 
 
-
-            }
-        });
-
-        apilarButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                //Primero creamos variables que cojan los valores introducidos
-                int id=Integer.parseInt(textField.getText());
-                int peso=Integer.parseInt(textField2.getText());
-                String pais= (String)comboBox1.getSelectedItem();
-                boolean inspeccionado=inspecciónEnAduanasCheckBox.isSelected();
-                ButtonModel seleccionado=ButtonGroup2.getSelection();
-                int prioridad=0;
-                System.out.println(a1RadioButton.isSelected());
-                System.out.println(a2RadioButton.isSelected());
-                System.out.println(a3RadioButton.isSelected());
-                if (a1RadioButton.isSelected()){prioridad=1;}
-                else if (a2RadioButton.isSelected()){prioridad=2;}
-                else if (a3RadioButton.isSelected()){prioridad=3;}
-                String descripción=textArea1.getText();
-                String empresaemisora=emisora.getText();
-                String empresaremitente=remitente.getText();
-
-
-
-
-                //Luego creamos un contenedor con esas variables, y lo apilamos en el puerto
-                Contenedor c1 = new Contenedor(id,peso,pais,inspeccionado,prioridad,descripción,empresaemisora,empresaremitente);
-                p1.apilarPuerto(c1);
-                System.out.println(p1.puerto[0].mostrar());
-                System.out.println(p1.puerto[1].mostrar());
-                System.out.println(p1.puerto[2].mostrar());
 
 
             }
