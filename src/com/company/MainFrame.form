@@ -252,14 +252,12 @@
           <text value="Prioridad"/>
         </properties>
       </component>
-      <component id="48c23" class="javax.swing.JTextArea" binding="Estado">
+      <component id="fbc4c" class="javax.swing.JButton" binding="MostrarEstado">
         <constraints>
-          <grid row="2" column="2" row-span="1" col-span="6" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
-            <preferred-size width="150" height="50"/>
-          </grid>
+          <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value=""/>
+          <text value="Mostrar Estado"/>
         </properties>
       </component>
     </children>

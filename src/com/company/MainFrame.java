@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 
 
 public class MainFrame extends JFrame {
-    public MainFrame(Frame2 ventana2){
+    public MainFrame(Frame2 ventana2,Frame3 ventana3){
         setTitle("Gestión de contenedores");
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
@@ -43,14 +43,7 @@ public class MainFrame extends JFrame {
                 //Luego creamos un contenedor con esas variables, y lo apilamos en el puerto
                 Contenedor c1 = new Contenedor(id,peso,pais,inspeccionado,prioridad,descripción,empresaemisora,empresaremitente);
                 p1.apilarPuerto(c1);
-                String mostrar=null;
 
-                //Mostramos el estado una vez apilado
-                for(int i=0;i<3;i++){
-                    if (i==0)mostrar=p1.puerto[i].mostrar();
-                    else mostrar=mostrar+p1.puerto[i].mostrar();
-                }
-                Estado.setText(mostrar);
 
             }
         });
@@ -59,7 +52,12 @@ public class MainFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-
+                /*Vamos pasando por las distintas filas y columnas de los tres hubs,
+                si una casilla no está vacía cogemos el contenedor y su id, si el id es igual al
+                que buscamos, salimos del bucle, y llamamos al metodo mostrar de Frame2 y abrimos
+                la segunda ventana. En caso de que no sean iguales, seguimos cogiendo
+                contenedores y sus id y comparamos estos ultimos con el id introducido por texto
+                 */
                 Contenedor c1=null;
                 int id = Integer.parseInt(mostrardatostext.getText());
                 int id2=0;
@@ -100,6 +98,12 @@ public class MainFrame extends JFrame {
 
             }
         });
+
+        /*
+        Vamos pasando por las diferentes filas y columnas de los hubs, y comparamos sus id (si no están vacias)
+        con el que buscamos, si es igual procedemos a desapilar el contenedor del puerto y salir del bucle,
+        sino, seguimos.
+         */
         desapilarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -127,14 +131,10 @@ public class MainFrame extends JFrame {
                     }
                 }
                 //Mostramos el estado una vez desapilado
-                String mostrar=null;
-                for(int i=0;i<3;i++){
-                    if (i==0)mostrar=p1.puerto[i].mostrar();
-                    else mostrar=mostrar+p1.puerto[i].mostrar();
-                }
-                Estado.setText(mostrar);
             }
         });
+        /*Seguimos buscando en el puerto, en este caso no son ids, sino el pais de procedencia
+        , si los encontramos sumamos 1 a un contador que luego mostramos en una casilla de texto*/
         cuantosButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -154,13 +154,26 @@ public class MainFrame extends JFrame {
 
             }
         });
+        /*Llama al metodo mostrar 3 veces y lo almacena en una variable que luego es pasada a un metodo
+        de la tercera ventana para que sea mostrado*/
+        MostrarEstado.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String texto=null;
+                for (int i=0;i<3;i++){
+                    if (i==0)texto=p1.puerto[0].mostrar();
+                    else texto=texto+p1.puerto[i].mostrar();
+                }
+                ventana3.mostrarEstado(texto);
+                ventana3.setVisible(true);
+            }
+        });
     }
     private JTextField textField4;
     private JTextField textField5;
     private JTextArea textArea1;
     private JComboBox comboBox1;
     private JCheckBox inspecciónEnAduanasCheckBox;
-    private JTextArea Estado;
     private ButtonGroup ButtonGroup2=new ButtonGroup();  //Creamos grupo de botones para que sean excluyentes
     private JRadioButton a1RadioButton;
     private JRadioButton a2RadioButton;
@@ -179,5 +192,6 @@ public class MainFrame extends JFrame {
     private JLabel emisora;
     private JLabel remitente;
     private JTextField mostrardatostext;
+    private JButton MostrarEstado;
 }
 

@@ -25,6 +25,8 @@ public class Frame2 extends JFrame {
 
     }
     public void mostrar(Contenedor c1){
+        /*Rellenamos la ventana según los valores de las variables del Contenedor,
+        para obtener los valores, como son privados, usamos gets*/
         this.c1=c1;
         idText.setText(String.valueOf(c1.getId()));
         PesoText.setText(String.valueOf(c1.getPeso()));
