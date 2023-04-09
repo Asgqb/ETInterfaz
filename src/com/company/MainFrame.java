@@ -20,6 +20,7 @@ public class MainFrame extends JFrame {
         comboBox1.addItem("Italia");
         comboBox1.addItem("Francia");
         Puerto p1=new Puerto();  //Creamos puerto
+        comboBox2.setModel(comboBox1.getModel()); //Copio opciones del primer combobox
 
         apilarButton.addActionListener(new ActionListener() {
             @Override
@@ -93,7 +94,6 @@ public class MainFrame extends JFrame {
         desapilarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println(p1.puerto[0].mostrar());
                 int id = Integer.parseInt(DesapilarText.getText());
                 int id2=0;
                 for (int i = 0; i < 3; i++) {
@@ -102,21 +102,40 @@ public class MainFrame extends JFrame {
                             if (i==0)
                             {
                                 if(p1.puerto[0].vacio(x,y)==true){continue;}
-                                id2=p1.puerto[0].getid(x,y); if (id2==id){p1.puerto[0].desapilar(y+1);System.out.println(p1.puerto[0].mostrar());}
+                                id2=p1.puerto[0].getid(x,y); if (id2==id){p1.puerto[0].desapilar(y+1);break;}
                             }
                             else if (i==1)
                             {
                                 if(p1.puerto[1].vacio(x,y)==true){continue;}
-                                id2=p1.puerto[1].getid(x,y);if (id2==id){p1.puerto[1].desapilar(y+1);}
+                                id2=p1.puerto[1].getid(x,y);if (id2==id){p1.puerto[1].desapilar(y+1);break;}
                             }
                             else if (i==2){
                                 if(p1.puerto[2].vacio(x,y)==true){continue;}
-                                id2=p1.puerto[2].getid(x,y);if (id2==id){p1.puerto[2].desapilar(y+1);}
+                                id2=p1.puerto[2].getid(x,y);if (id2==id){p1.puerto[2].desapilar(y+1);break;}
                             }
 
                         }
                     }
                 }
+            }
+        });
+        cuantosButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String pais=(String)comboBox2.getSelectedItem();
+                String pais2;
+                int contador=0;
+                for(int i=0;i<3;i++){
+                    for(int x=0;x<10;x++){
+                        for(int y=0;y<12;y++){
+                            if(p1.puerto[i].vacio(x,y)==true){continue;}
+                            pais2=p1.puerto[i].pais(x,y);
+                            if(pais2==pais) contador=contador+1;
+                        }
+                    }
+                }
+                textField3.setText(String.valueOf(contador));
+
             }
         });
     }
