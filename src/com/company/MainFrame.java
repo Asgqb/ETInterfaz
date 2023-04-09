@@ -22,6 +22,7 @@ public class MainFrame extends JFrame {
         Puerto p1=new Puerto();  //Creamos puerto
         comboBox2.setModel(comboBox1.getModel()); //Copio opciones del primer combobox
 
+
         apilarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -42,6 +43,14 @@ public class MainFrame extends JFrame {
                 //Luego creamos un contenedor con esas variables, y lo apilamos en el puerto
                 Contenedor c1 = new Contenedor(id,peso,pais,inspeccionado,prioridad,descripción,empresaemisora,empresaremitente);
                 p1.apilarPuerto(c1);
+                String mostrar=null;
+
+                //Mostramos el estado una vez apilado
+                for(int i=0;i<3;i++){
+                    if (i==0)mostrar=p1.puerto[i].mostrar();
+                    else mostrar=mostrar+p1.puerto[i].mostrar();
+                }
+                Estado.setText(mostrar);
 
             }
         });
@@ -117,6 +126,13 @@ public class MainFrame extends JFrame {
                         }
                     }
                 }
+                //Mostramos el estado una vez desapilado
+                String mostrar=null;
+                for(int i=0;i<3;i++){
+                    if (i==0)mostrar=p1.puerto[i].mostrar();
+                    else mostrar=mostrar+p1.puerto[i].mostrar();
+                }
+                Estado.setText(mostrar);
             }
         });
         cuantosButton.addActionListener(new ActionListener() {
