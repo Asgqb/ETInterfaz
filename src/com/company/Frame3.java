@@ -1,8 +1,9 @@
 package com.company;
 
 import javax.swing.*;
+import java.io.Serializable;
 
-public class Frame3 extends JFrame {
+public class Frame3 extends JFrame{
 
 
     private JPanel Panel2;

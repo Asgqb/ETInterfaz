@@ -3,9 +3,13 @@ package com.company;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.Serializable;
 
 
-public class MainFrame extends JFrame {
+public class MainFrame extends JFrame implements Serializable{
     public MainFrame(Frame2 ventana2,Frame3 ventana3){
         setTitle("Gestión de contenedores");
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -19,7 +23,7 @@ public class MainFrame extends JFrame {
         comboBox1.addItem("España");
         comboBox1.addItem("Italia");
         comboBox1.addItem("Francia");
-        Puerto p1=new Puerto();  //Creamos puerto
+        p1=Puerto.cargarPuerto();  //Creamos puerto
         comboBox2.setModel(comboBox1.getModel()); //Copio opciones del primer combobox
 
 
@@ -43,6 +47,7 @@ public class MainFrame extends JFrame {
                 //Luego creamos un contenedor con esas variables, y lo apilamos en el puerto
                 Contenedor c1 = new Contenedor(id,peso,pais,inspeccionado,prioridad,descripción,empresaemisora,empresaremitente);
                 p1.apilarPuerto(c1);
+                Puerto.guardarPuerto(p1);
 
 
             }
@@ -130,6 +135,7 @@ public class MainFrame extends JFrame {
                         }
                     }
                 }
+                Puerto.guardarPuerto(p1);
                 //Mostramos el estado una vez desapilado
             }
         });
@@ -193,5 +199,6 @@ public class MainFrame extends JFrame {
     private JLabel remitente;
     private JTextField mostrardatostext;
     private JButton MostrarEstado;
+    private Puerto p1;
 }
 

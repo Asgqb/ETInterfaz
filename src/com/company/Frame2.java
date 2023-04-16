@@ -1,8 +1,9 @@
 package com.company;
 
 import javax.swing.*;
+import java.io.Serializable;
 
-public class Frame2 extends JFrame {
+public class Frame2 extends JFrame{
     private JCheckBox inspecciónEnAduanasCheckBox;
     private JTextField idText;
     private JTextField PesoText;
