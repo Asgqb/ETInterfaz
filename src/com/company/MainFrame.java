@@ -23,7 +23,7 @@ public class MainFrame extends JFrame implements Serializable{
         comboBox1.addItem("España");
         comboBox1.addItem("Italia");
         comboBox1.addItem("Francia");
-        p1=Puerto.cargarPuerto();  //Creamos puerto
+        p1=Puerto.cargarPuerto();  //p1 es un atributo de la ventana, si hay un puerto guardado lo cargamos
         comboBox2.setModel(comboBox1.getModel()); //Copio opciones del primer combobox
 
 
@@ -47,7 +47,7 @@ public class MainFrame extends JFrame implements Serializable{
                 //Luego creamos un contenedor con esas variables, y lo apilamos en el puerto
                 Contenedor c1 = new Contenedor(id,peso,pais,inspeccionado,prioridad,descripción,empresaemisora,empresaremitente);
                 p1.apilarPuerto(c1);
-                Puerto.guardarPuerto(p1);
+                Puerto.guardarPuerto(p1); //Guardamos el puerto después de apilar el contenedor
 
 
             }
@@ -136,7 +136,7 @@ public class MainFrame extends JFrame implements Serializable{
                     }
                 }
                 Puerto.guardarPuerto(p1);
-                //Mostramos el estado una vez desapilado
+                //guardamos el puerto una vez desapilado el contenedor
             }
         });
         /*Seguimos buscando en el puerto, en este caso no son ids, sino el pais de procedencia
