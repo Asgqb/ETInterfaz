@@ -260,6 +260,46 @@
           <text value="Mostrar Estado"/>
         </properties>
       </component>
+      <component id="700e9" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="2" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Hub"/>
+        </properties>
+      </component>
+      <component id="1b8aa" class="javax.swing.JRadioButton" binding="a1RadioButton1">
+        <constraints>
+          <grid row="2" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="1"/>
+        </properties>
+      </component>
+      <component id="1f4ad" class="javax.swing.JRadioButton" binding="a2RadioButton1">
+        <constraints>
+          <grid row="2" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="2"/>
+        </properties>
+      </component>
+      <component id="28283" class="javax.swing.JRadioButton" binding="a3RadioButton1">
+        <constraints>
+          <grid row="2" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="3"/>
+        </properties>
+      </component>
+      <component id="31453" class="javax.swing.JButton" binding="Peso">
+        <constraints>
+          <grid row="2" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Peso"/>
+        </properties>
+      </component>
     </children>
   </grid>
 </form>

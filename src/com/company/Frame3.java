@@ -13,7 +13,7 @@ public class Frame3 extends JFrame{
     public Frame3(){
         setTitle("Estado");
         setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
-        setSize(400,600);
+        setSize(450,600);
         setContentPane(Panel2);
 
 

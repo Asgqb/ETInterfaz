@@ -3,9 +3,6 @@ package com.company;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
 import java.io.Serializable;
 
 
@@ -19,6 +16,9 @@ public class MainFrame extends JFrame implements Serializable{
         ButtonGroup2.add(a1RadioButton);   //Añadimos los botones al grupo de botones que hemos
         ButtonGroup2.add(a2RadioButton);    //creado fuera del constructor para que sean excluyentes
         ButtonGroup2.add(a3RadioButton);
+        ButtonGroup3.add(a1RadioButton1);   //Añadimos los botones al grupo de botones que hemos
+        ButtonGroup3.add(a2RadioButton1);    //creado fuera del constructor para que sean excluyentes
+        ButtonGroup3.add(a3RadioButton1);
         //Añadir opciones a la selección de países
         comboBox1.addItem("España");
         comboBox1.addItem("Italia");
@@ -174,13 +174,29 @@ public class MainFrame extends JFrame implements Serializable{
                 ventana3.setVisible(true);
             }
         });
+
+        Peso.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int hub=-1;  int peso; String resultado;
+                if (a1RadioButton1.isSelected()){hub=0;}
+                else if (a2RadioButton1.isSelected()){hub=1;}
+                else if (a3RadioButton1.isSelected()){hub=2;}
+                else System.out.println("Error, ningun Hub seleccionado");
+                peso= Integer.parseInt(textField2.getText());
+                resultado=p1.PesoHub(peso,hub);
+                ventana3.mostrarEstado(resultado);
+                ventana3.setVisible(true);
+            }
+        });
     }
     private JTextField textField4;
     private JTextField textField5;
     private JTextArea textArea1;
     private JComboBox comboBox1;
     private JCheckBox inspecciónEnAduanasCheckBox;
-    private ButtonGroup ButtonGroup2=new ButtonGroup();  //Creamos grupo de botones para que sean excluyentes
+    private ButtonGroup ButtonGroup2=new ButtonGroup();
+    private ButtonGroup ButtonGroup3=new ButtonGroup(); //Creamos grupo de botones para que sean excluyentes
     private JRadioButton a1RadioButton;
     private JRadioButton a2RadioButton;
     private JRadioButton a3RadioButton;
@@ -199,6 +215,10 @@ public class MainFrame extends JFrame implements Serializable{
     private JLabel remitente;
     private JTextField mostrardatostext;
     private JButton MostrarEstado;
+    private JRadioButton a1RadioButton1;
+    private JRadioButton a2RadioButton1;
+    private JRadioButton a3RadioButton1;
+    private JButton Peso;
     private Puerto p1;
 }
 
